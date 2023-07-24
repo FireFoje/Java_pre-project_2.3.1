@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<h1>Users list</h1>
+<body>
+<table>
+    <tr>
+    <tr th:each="users : ${userList}">
+        <td th:utext="${users.getName()}"></td>
+        <td th:utext="${users.getLastName()}"></td>
+        <td th:utext="${users.getAge()}"></td>
+        <td>
+            <form th:action="@{/users/__${users.id}__}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Delete</button>
+            </form>
+            <form th:action="@{users/edit/__${users.id}__}" method="get">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Edit</button>
+            </form>
+
+        </td>
+    </tr>
+
+</table>
+<a type="button" href="/spring_mvc_war_exploded/users/new">Add new user</a>
+
+</body>
+</html>
