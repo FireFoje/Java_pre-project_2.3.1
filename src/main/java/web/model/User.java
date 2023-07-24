@@ -18,15 +18,12 @@ public class User {
 
     @Column
     @Size(min = 2, max = 30, message = "Insert your name...")
-    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private String name;
 
     @Column
-    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private String lastName;
 
     @Column
-    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private int age;
 
     public User() {
