@@ -14,11 +14,11 @@
         <td th:utext="${users.getLastName()}"></td>
         <td th:utext="${users.getAge()}"></td>
         <td>
-            <form th:action="@{/users/__${users.id}__}" method="post">
+            <form th:action="@{/__${users.id}__}" method="post">
                 <input type="hidden" name="_method" value="delete"/>
                 <button type="submit">Delete</button>
             </form>
-            <form th:action="@{users/edit/__${users.id}__}" method="get">
+            <form th:action="@{/edit/__${users.id}__}" method="get">
                 <input type="hidden" name="_method" value="delete"/>
                 <button type="submit">Edit</button>
             </form>
@@ -27,7 +27,8 @@
     </tr>
 
 </table>
-<a type="button" href="/spring_mvc_war_exploded/users/new">Add new user</a>
-
+<div>
+    <a type="button" th:href="@{/new}" class="btn btn-secondary bg-secondary text-white">Add new user</a>
+</div>
 </body>
 </html>

@@ -1,20 +1,16 @@
 package web.model;
 
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
 public class User {
 
-    private @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
 
     @Column
     @Size(min = 2, max = 30, message = "Insert your name...")

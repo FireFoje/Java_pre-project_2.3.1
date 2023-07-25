@@ -1,13 +1,14 @@
 package web.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 import web.repository.UserRepository;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void createOrUpdate(User user){
+    public void createOrUpdate(User user) {
         if (user.getId() == 0) {
             saveUser(user);
         } else {
@@ -35,16 +36,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public User deleteUser(Long id) {
         return userRepository.deleteUser(id);
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userRepository.updateUser(user);
     }
 
     @Override
+    @Transactional
     public void saveUser(User user) {
         userRepository.saveUser(user);
     }
